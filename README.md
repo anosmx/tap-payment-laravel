@@ -49,7 +49,7 @@ Token
 ```
 
 ### Example class usage:
-####Access the class using Facade.
+#### Access the class using Facade.
 ```php
 use Anosmx\TapPayment\Facades\TapCharge;
 
