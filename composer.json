@@ -1,0 +1,31 @@
+{
+    "name": "anosmx/tap-payment-laravel",
+    "description": "Laravel wrapper for Tap Payment gateway API. https://tap.company",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AnasB",
+            "email": "anosmx@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Anosmx\\TapPayment\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Anosmx\\TapPayment\\TapPaymentServiceProvider"
+            ],
+            "aliases": {
+                "TapSubscription": "Anosmx\\TapPayment\\Facades\\TapSubscription",
+                "TapCharge": "Anosmx\\TapPayment\\Facades\\TapCharge"
+            }
+        }
+    }
+}
