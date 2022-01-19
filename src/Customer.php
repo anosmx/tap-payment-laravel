@@ -46,13 +46,11 @@ class Customer extends TapPayment
             "last_name" => $attributes['last_name'],
             "email" => $attributes['email'],
             "phone" => [
-                "country_code" => $attributes['phone_country_code'] ?? $this->country_code,
+                "country_code" => $this->country_code,
                 "number" => $attributes['phone_number']
             ],
             "description" => $attributes['description'],
-            "metadata" => [
-                "udf1" => $attributes['metadata_udf1']
-            ],
+            "metadata" => $attributes['metadata'],
             "currency" => $this->currency
         ];
 

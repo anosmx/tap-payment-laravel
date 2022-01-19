@@ -38,97 +38,75 @@ class Order extends TapPayment
      * @param array $attributes
      * @return array|mixed
      */
-    public function createProduct(array $attributes)
+    public function createOrder(array $attributes)
     {
         $postRequest = [
             "amount" => $attributes['amount'],
-            "currency" => $attributes['currency'] ?? $this->currency,
-            "threeDSecure" => $attributes['threeDSecure'],
-            "save_card" => $attributes['save_card'],
-            "description" => $attributes['description'],
-            "statement_descriptor" => $attributes['statement_descriptor'],
-            "metadata" => [
-                "udf1" => $attributes['metadata_udf1'],
-                "udf2" => $attributes['metadata_udf2']
-            ],
-            "reference" => [
-                "transaction" => $attributes['reference_transaction'],
-                "order" => $attributes['reference_order']
-            ],
-            "receipt" => [
-                "email" => $attributes['receipt_email'] ?? $this->receipt_by_email,
-                "sms" => $attributes['receipt_sms'] ?? $this->receipt_by_sms
-            ],
+            "currency" => $this->currency,
             "customer" => [
-                "first_name" => $attributes['customer_first_name'],
-                "middle_name" => $attributes['customer_middle_name'],
-                "last_name" => $attributes['customer_last_name'],
-                "email" => $attributes['customer_email'],
+                "first_name" => $attributes['first_name'],
+                "middle_name" => $attributes['middle_name'],
+                "last_name" => $attributes['last_name'],
                 "phone" => [
-                    "country_code" => $attributes['phone_country_code'] ?? $this->country_code,
+                    "country_code" => $this->country_code,
                     "number" => $attributes['phone_number']
-                ]
-            ],
-            "merchant" => [
-                "id" => $attributes['merchant_id']
-            ],
-            "source" => [
-                "id" => $attributes['source_id']
-            ],
-            "post" => [
-                "url" => $attributes['post_url'] ?? $this->post_url
-            ],
-            "redirect" => [
-                "url" => $attributes['redirect_url'] ?? $this->redirect_url
-            ],
-
-            "items" => [
-                [
-                    "name" => [
-                        "en" => "test"
-                    ],
-                    "description" => [
-                        "en" => "test"
-                    ],
-                    "image" => "",
-                    "currency" => "KWD",
-                    "amount" => 1,
-                    "quantity" => "1",
-                    "discount" => [
-                        "type" => "P",
-                        "value" => 0
-                    ]
-                ]
-            ],
-            "tax" => [
-                [
-                    "description" => "test",
-                    "name" => "VAT",
-                    "rate" => [
-                        "type" => "F",
-                        "value" => 1
-                    ]
-                ]
-            ],
-            "shipping" => [
-                "amount" => 1,
-                "currency" => "KWD",
-                "description" => [
-                    "en" => "test"
                 ],
-                "address" => [
-                    "recipient_name" => "test",
-                    "line1" => "sdfghjk",
-                    "line2" => "oiuytr",
-                    "district" => "hawally",
-                    "city" => "hawally",
-                    "state" => "hw",
-                    "zip_code" => "30003",
-                    "po_box" => "200021",
-                    "country" => "kuwait"
-                ]
+                "email" => $attributes['email']
+            ],
+            "items" => $attributes['items'],
+//            "tax" => [
+//                [
+//                    "description" => "test",
+//                    "name" => "VAT",
+//                    "rate" => [
+//                        "type" => "F",
+//                        "value" => 1
+//                    ]
+//                ]
+//            ],
+//            "shipping" => [
+//                "amount" => 1,
+//                "currency" => "KWD",
+//                "description" => [
+//                    "en" => "test"
+//                ],
+//                "address" => [
+//                    "recipient_name" => "test",
+//                    "line1" => "sdfghjk",
+//                    "line2" => "oiuytr",
+//                    "district" => "hawally",
+//                    "city" => "hawally",
+//                    "state" => "hw",
+//                    "zip_code" => "30003",
+//                    "po_box" => "200021",
+//                    "country" => "kuwait"
+//                ]
+//            ],
+            "metadata" => $attributes['metadata'],
+            "reference" => [
+                "invoice" => $attributes['reference_invoice'],
+                "order" => $attributes['reference_order']
             ]
         ];
+
+//        [
+//            [
+//                "name" => [
+//                    "en" => "test"
+//                ],
+//                "description" => [
+//                    "en" => "test"
+//                ],
+//                "image" => "",
+//                "currency" => "KWD",
+//                "amount" => 1,
+//                "quantity" => "1",
+//                "discount" => [
+//                    "type" => "P",
+//                    "value" => 0
+//                ]
+//            ]
+//        ]
 
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'orders', $postRequest);

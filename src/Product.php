@@ -41,7 +41,7 @@ class Product extends TapPayment
     {
         $postRequest = [
             "amount" => $attributes['amount'],
-            "currency" => $attributes['currency'] ?? $this->currency,
+            "currency" => $this->currency,
             "description" => $attributes['description'],
             "discount" => [
                 "type" => $attributes['discount_type'],

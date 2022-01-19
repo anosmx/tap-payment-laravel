@@ -51,7 +51,7 @@ class Subscription extends TapPayment
                 "from" => $attributes['term_from_datetime'],
                 "due" => $attributes['term_due'],
                 "auto_renew" => $attributes['term_auto_renew'],
-                "timezone" => $attributes['term_timezone'] ?? $this->timezone
+                "timezone" => $this->timezone
             ],
             "trial" => [
                 "days" => $attributes['trail_days'],
@@ -59,16 +59,13 @@ class Subscription extends TapPayment
             ],
             "charge" => [
                 "amount" => $attributes['charge_amount'],
-                "currency" => $attributes['charge_currency'] ?? $this->currency,
+                "currency" => $this->currency,
                 "description" => $attributes['charge_description'],
                 "statement_descriptor" => $attributes['charge_statement_descriptor'],
-                "metadata" => [
-                    "udf1" => $attributes['charge_metadata_udf1'],
-                    "udf2" => $attributes['charge_metadata_udf2']
-                ],
+                "metadata" => $attributes['metadata'],
                 "reference" => [
-                    "transaction" => $attributes['charge_reference_transaction'],
-                    "order" => $attributes['charge_reference_order']
+                    "transaction" => $attributes['reference_transaction'],
+                    "order" => $attributes['reference_order']
                 ],
                 "receipt" => [
                     "email" => $attributes['receipt_email'] ?? $this->receipt_by_email,
@@ -112,29 +109,26 @@ class Subscription extends TapPayment
      * @param array $attributes
      * @return array|mixed
      */
-    public function updateSubscription(array $attributes)
+    public function updateSubscription($subscription_id, array $attributes)
     {
         $putRequest = [
-            "subscription_id" => $attributes['subscription_id'],
+            "subscription_id" => $subscription_id,
             "amount" => $attributes['amount'],
-            "auto-renew" => $attributes['auto_renew'] ?? true,
+            "auto-renew" => $attributes['auto_renew'],
             "description" => $attributes['description'],
             "statement_descriptor" => $attributes['statement_descriptor'],
-            "metadata" => [
-                "udf1" => $attributes['metadata_udf1'],
-                "udf2" => $attributes['metadata_udf2']
-            ],
+            "metadata" => $attributes['metadata'],
             "reference" => [
                 "transaction" => $attributes['reference_transaction'],
                 "order" => $attributes['reference_order']
             ],
             "receipt" => [
-                "email" => $attributes['receipt_email'] ?? false,
-                "sms" => $attributes['receipt_sms'] ?? true
+                "email" => $attributes['receipt_email'] ?? $this->receipt_by_email,
+                "sms" => $attributes['receipt_sms'] ?? $this->receipt_by_sms
             ],
             "card_id" => $attributes['card_id'],
             "post" => [
-                "url" => $attributes['post_url']
+                "url" => $attributes['post_url'] ?? $this->post_url
             ],
         ];
 
