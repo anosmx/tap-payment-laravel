@@ -15,15 +15,15 @@ class Order extends TapPayment
     public function listOrders(array $attributes)
     {
         $postRequest = [
-            "status" => $attributes['status'],
+            "status" => $attributes['status'] ?? '',
             "period" => [
                 "date" => [
-                    "from" => $attributes['period_date_from'],
-                    "to" => $attributes['period_date_to']
+                    "from" => $attributes['period_date_from'] ?? '',
+                    "to" => $attributes['period_date_to'] ?? ''
                 ],
             ],
-            "starting_after" => $attributes['starting_after'],
-            "limit" => $attributes['limit'],
+            "starting_after" => $attributes['starting_after'] ?? '',
+            "limit" => $attributes['limit'] ?? '',
         ];
 
         $response = Http::withToken($this->api_token)
@@ -41,19 +41,19 @@ class Order extends TapPayment
     public function createOrder(array $attributes)
     {
         $postRequest = [
-            "amount" => $attributes['amount'],
+            "amount" => $attributes['amount'] ?? '',
             "currency" => $this->currency,
             "customer" => [
-                "first_name" => $attributes['first_name'],
-                "middle_name" => $attributes['middle_name'],
-                "last_name" => $attributes['last_name'],
+                "first_name" => $attributes['first_name'] ?? '',
+                "middle_name" => $attributes['middle_name'] ?? '',
+                "last_name" => $attributes['last_name'] ?? '',
                 "phone" => [
                     "country_code" => $this->country_code,
-                    "number" => $attributes['phone_number']
+                    "number" => $attributes['phone_number'] ?? ''
                 ],
-                "email" => $attributes['email']
+                "email" => $attributes['email'] ?? ''
             ],
-            "items" => $attributes['items'],
+            "items" => $attributes['items'] ?? '',
 //            "tax" => [
 //                [
 //                    "description" => "test",
@@ -82,10 +82,10 @@ class Order extends TapPayment
 //                    "country" => "kuwait"
 //                ]
 //            ],
-            "metadata" => $attributes['metadata'],
+            "metadata" => $attributes['metadata'] ?? '',
             "reference" => [
-                "invoice" => $attributes['reference_invoice'],
-                "order" => $attributes['reference_order']
+                "invoice" => $attributes['reference_invoice'] ?? '',
+                "order" => $attributes['reference_order'] ?? ''
             ]
         ];
 
@@ -138,7 +138,7 @@ class Order extends TapPayment
     public function updateOrder($order_id, array $attributes)
     {
         $putRequest = [
-            "amount" => $attributes['amount'],
+            "amount" => $attributes['amount'] ?? '',
             "currency" => $attributes['currency'] ?? $this->currency,
             "items" => [
                 [

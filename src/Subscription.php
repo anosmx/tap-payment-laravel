@@ -23,8 +23,8 @@ class Subscription extends TapPayment
                     "to" => $attributes['period_date_to'] ?? ''
                 ]
             ],
-            "customers" => $attributes['customers'],
-            "cards" => $attributes['cards'],
+            "customers" => $attributes['customers'] ?? '',
+            "cards" => $attributes['cards'] ?? '',
             "subscriptions" => $attributes['subscriptions'] ?? '',
             "starting_after" => $attributes['starting_after'] ?? '',
             "limit" => $attributes['limit'] ?? ''
@@ -46,39 +46,39 @@ class Subscription extends TapPayment
     {
         $postRequest = [
             "term" => [
-                "interval" => $attributes['term_interval'],
-                "period" => $attributes['term_period'],
-                "from" => $attributes['term_from_datetime'],
-                "due" => $attributes['term_due'],
-                "auto_renew" => $attributes['term_auto_renew'],
+                "interval" => $attributes['term_interval'] ?? '',
+                "period" => $attributes['term_period'] ?? '',
+                "from" => $attributes['term_from_datetime'] ?? '',
+                "due" => $attributes['term_due'] ?? '',
+                "auto_renew" => $attributes['term_auto_renew'] ?? '',
                 "timezone" => $this->timezone
             ],
             "trial" => [
-                "days" => $attributes['trail_days'],
-                "amount" => $attributes['trail_amount']
+                "days" => $attributes['trail_days'] ?? '',
+                "amount" => $attributes['trail_amount'] ?? ''
             ],
             "charge" => [
-                "amount" => $attributes['charge_amount'],
+                "amount" => $attributes['charge_amount'] ?? '',
                 "currency" => $this->currency,
-                "description" => $attributes['charge_description'],
-                "statement_descriptor" => $attributes['charge_statement_descriptor'],
-                "metadata" => $attributes['metadata'],
+                "description" => $attributes['charge_description'] ?? '',
+                "statement_descriptor" => $attributes['charge_statement_descriptor'] ?? '',
+                "metadata" => $attributes['metadata'] ?? '',
                 "reference" => [
-                    "transaction" => $attributes['reference_transaction'],
-                    "order" => $attributes['reference_order']
+                    "transaction" => $attributes['reference_transaction'] ?? '',
+                    "order" => $attributes['reference_order'] ?? ''
                 ],
                 "receipt" => [
                     "email" => $attributes['receipt_email'] ?? $this->receipt_by_email,
                     "sms" => $attributes['receipt_sms'] ?? $this->receipt_by_sms
                 ],
                 "customer" => [
-                    "id" => $attributes['charge_customer_id']
+                    "id" => $attributes['charge_customer_id'] ?? ''
                 ],
                 "source" => [
-                    "id" => $attributes['charge_source_id']
+                    "id" => $attributes['charge_source_id'] ?? ''
                 ],
                 "post" => [
-                    "url" => $attributes['charge_post_url']
+                    "url" => $attributes['charge_post_url'] ?? ''
                 ]
             ]
         ];
@@ -113,20 +113,20 @@ class Subscription extends TapPayment
     {
         $putRequest = [
             "subscription_id" => $subscription_id,
-            "amount" => $attributes['amount'],
-            "auto-renew" => $attributes['auto_renew'],
-            "description" => $attributes['description'],
-            "statement_descriptor" => $attributes['statement_descriptor'],
-            "metadata" => $attributes['metadata'],
+            "amount" => $attributes['amount'] ?? '',
+            "auto-renew" => $attributes['auto_renew'] ?? '',
+            "description" => $attributes['description'] ?? '',
+            "statement_descriptor" => $attributes['statement_descriptor'] ?? '',
+            "metadata" => $attributes['metadata'] ?? '',
             "reference" => [
-                "transaction" => $attributes['reference_transaction'],
-                "order" => $attributes['reference_order']
+                "transaction" => $attributes['reference_transaction'] ?? '',
+                "order" => $attributes['reference_order'] ?? ''
             ],
             "receipt" => [
                 "email" => $attributes['receipt_email'] ?? $this->receipt_by_email,
                 "sms" => $attributes['receipt_sms'] ?? $this->receipt_by_sms
             ],
-            "card_id" => $attributes['card_id'],
+            "card_id" => $attributes['card_id'] ?? '',
             "post" => [
                 "url" => $attributes['post_url'] ?? $this->post_url
             ],

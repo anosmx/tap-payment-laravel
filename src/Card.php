@@ -30,28 +30,25 @@ class Card extends TapPayment
     public function verifyCard(array $attributes)
     {
         $postRequest = [
-            "currency" => $attributes['currency'] ?? $this->currency,
-            "threeDSecure" => $attributes['threeDSecure'],
-            "save_card" => $attributes['save_card'],
-            "metadata" => [
-                "udf1" => $attributes['metadata_udf1'],
-                "udf2" => $attributes['metadata_udf2']
-            ],
+            "currency" => $this->currency,
+            "threeDSecure" => $attributes['threeDSecure'] ?? '',
+            "save_card" => $attributes['save_card'] ?? '',
+            "metadata" => $attributes['metadata'],
             "customer" => [
-                "first_name" => $attributes['customer_first_name'],
-                "middle_name" => $attributes['customer_middle_name'],
-                "last_name" => $attributes['customer_last_name'],
-                "email" => $attributes['customer_email'],
+                "first_name" => $attributes['customer_first_name'] ?? '',
+                "middle_name" => $attributes['customer_middle_name'] ?? '',
+                "last_name" => $attributes['customer_last_name'] ?? '',
+                "email" => $attributes['customer_email'] ?? '',
                 "phone" => [
-                    "country_code" => $attributes['customer_phone_country_code'] ?? $this->country_code,
-                    "number" => $attributes['customer_phone_number']
+                    "country_code" => $this->country_code,
+                    "number" => $attributes['customer_phone_number'] ?? ''
                 ]
             ],
             "source" => [
-                "id" => $attributes['source_id']
+                "id" => $attributes['source_id'] ?? ''
             ],
             "redirect" => [
-                "url" => $attributes['redirect_url']
+                "url" => $attributes['redirect_url'] ?? ''
             ]
         ];
 

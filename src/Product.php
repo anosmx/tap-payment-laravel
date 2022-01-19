@@ -17,12 +17,12 @@ class Product extends TapPayment
         $postRequest = [
             "period" => [
                 "date" => [
-                    "from" => $attributes['period_date_from'],
-                    "to" => $attributes['period_date_to']
+                    "from" => $attributes['period_date_from'] ?? '',
+                    "to" => $attributes['period_date_to'] ?? ''
                 ]
             ],
-            "starting_after" => $attributes['starting_after'],
-            "limit" => $attributes['limit']
+            "starting_after" => $attributes['starting_after'] ?? '',
+            "limit" => $attributes['limit'] ?? ''
         ];
 
         $response = Http::withToken($this->api_token)
@@ -40,16 +40,16 @@ class Product extends TapPayment
     public function createProduct(array $attributes)
     {
         $postRequest = [
-            "amount" => $attributes['amount'],
+            "amount" => $attributes['amount'] ?? '',
             "currency" => $this->currency,
-            "description" => $attributes['description'],
+            "description" => $attributes['description'] ?? '',
             "discount" => [
-                "type" => $attributes['discount_type'],
-                "value" => $attributes['discount_value']
+                "type" => $attributes['discount_type'] ?? '',
+                "value" => $attributes['discount_value'] ?? ''
             ],
-            "image" => $attributes['image'],
-            "name" => $attributes['name'],
-            "quantity" => $attributes['quantity']
+            "image" => $attributes['image'] ?? '',
+            "name" => $attributes['name'] ?? '',
+            "quantity" => $attributes['quantity'] ?? ''
         ];
 
         $response = Http::withToken($this->api_token)
@@ -82,16 +82,16 @@ class Product extends TapPayment
     public function updateProduct($product_id, array $attributes)
     {
         $putRequest = [
-            "amount" => $attributes['amount'],
-            "currency" => $attributes['currency'] ?? $this->currency,
-            "description" => $attributes['description'],
+            "amount" => $attributes['amount'] ?? '',
+            "currency" => $this->currency,
+            "description" => $attributes['description'] ?? '',
             "discount" => [
-                "type" => $attributes['discount_type'],
-                "value" => $attributes['discount_value']
+                "type" => $attributes['discount_type'] ?? '',
+                "value" => $attributes['discount_value'] ?? ''
             ],
-            "image" => $attributes['image'],
-            "name" => $attributes['name'],
-            "quantity" => $attributes['quantity']
+            "image" => $attributes['image'] ?? '',
+            "name" => $attributes['name'] ?? '',
+            "quantity" => $attributes['quantity'] ?? ''
         ];
 
         $response = Http::withToken($this->api_token)

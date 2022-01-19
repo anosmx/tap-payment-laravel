@@ -18,12 +18,12 @@ class Customer extends TapPayment
         $postRequest = [
             "period" => [
                 "date" => [
-                    "from" => $attributes['period_date_from'],
-                    "to" => $attributes['period_date_to']
+                    "from" => $attributes['period_date_from'] ?? '',
+                    "to" => $attributes['period_date_to'] ?? ''
                 ],
             ],
-            "starting_after" => $attributes['starting_after'],
-            "limit" => $attributes['limit'],
+            "starting_after" => $attributes['starting_after'] ?? '',
+            "limit" => $attributes['limit'] ?? '',
         ];
 
         $response = Http::withToken($this->api_token)
@@ -41,16 +41,16 @@ class Customer extends TapPayment
     public function createCustomer(array $attributes)
     {
         $postRequest = [
-            "first_name" => $attributes['first_name'],
-            "middle_name" => $attributes['middle_name'],
-            "last_name" => $attributes['last_name'],
-            "email" => $attributes['email'],
+            "first_name" => $attributes['first_name'] ?? '',
+            "middle_name" => $attributes['middle_name'] ?? '',
+            "last_name" => $attributes['last_name'] ?? '',
+            "email" => $attributes['email'] ?? '',
             "phone" => [
                 "country_code" => $this->country_code,
-                "number" => $attributes['phone_number']
+                "number" => $attributes['phone_number'] ?? ''
             ],
-            "description" => $attributes['description'],
-            "metadata" => $attributes['metadata'],
+            "description" => $attributes['description'] ?? '',
+            "metadata" => $attributes['metadata'] ?? '',
             "currency" => $this->currency
         ];
 
@@ -84,17 +84,17 @@ class Customer extends TapPayment
     public function updateCustomer($customer_id, array $attributes)
     {
         $putRequest = [
-            "first_name" => $attributes['first_name'],
-            "middle_name" => $attributes['middle_name'],
-            "last_name" => $attributes['last_name'],
-            "email" => $attributes['email'],
+            "first_name" => $attributes['first_name'] ?? '',
+            "middle_name" => $attributes['middle_name'] ?? '',
+            "last_name" => $attributes['last_name'] ?? '',
+            "email" => $attributes['email'] ?? '',
             "phone" => [
                 "country_code" => $attributes['phone_country_code'] ?? $this->country_code,
-                "number" => $attributes['phone_number']
+                "number" => $attributes['phone_number'] ?? ''
             ],
-            "description" => $attributes['description'],
+            "description" => $attributes['description'] ?? '',
             "metadata" => [
-                "udf1" => $attributes['metadata_udf1']
+                "udf1" => $attributes['metadata_udf1'] ?? ''
             ],
             "currency" => $attributes['currency'] ?? $this->currency
         ];
