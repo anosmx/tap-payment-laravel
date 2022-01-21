@@ -33,7 +33,7 @@ class Subscription extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'subscription/v1/list', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -86,7 +86,7 @@ class Subscription extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'subscription/v1/', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -100,7 +100,7 @@ class Subscription extends TapPayment
         $response = Http::withToken($this->api_token)
             ->get($this->endpoint . 'subscription/v1/' . $subscription_id);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -135,7 +135,7 @@ class Subscription extends TapPayment
         $response = Http::withToken($this->api_token)
             ->put($this->endpoint . 'subscription/v1/', $putRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -149,6 +149,6 @@ class Subscription extends TapPayment
         $response = Http::withToken($this->api_token)
             ->delete($this->endpoint . 'subscription/v1/' . $subscription_id);
 
-        return $response->json();
+        return $response;
     }
 }

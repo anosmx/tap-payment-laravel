@@ -24,7 +24,7 @@ class Invoice extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'invoices/list', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -96,7 +96,7 @@ class Invoice extends TapPayment
         ])
             ->post($this->endpoint . 'invoices', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -110,7 +110,7 @@ class Invoice extends TapPayment
         $response = Http::withToken($this->api_token)
             ->get($this->endpoint . 'invoices/' . $invoice_id);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -187,7 +187,7 @@ class Invoice extends TapPayment
         $response = Http::withToken($this->api_token)
             ->put($this->endpoint . 'invoices/' . $invoice_id, $putRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -201,7 +201,7 @@ class Invoice extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'invoices/' . $invoice_id . '/finalize');
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -215,7 +215,7 @@ class Invoice extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'invoices/' . $invoice_id . '/remind');
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -229,6 +229,6 @@ class Invoice extends TapPayment
         $response = Http::withToken($this->api_token)
             ->delete($this->endpoint . 'invoices/' . $invoice_id);
 
-        return $response->json();
+        return $response;
     }
 }

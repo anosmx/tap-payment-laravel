@@ -29,7 +29,7 @@ class Customer extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'customers/list', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -57,7 +57,7 @@ class Customer extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'customers', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -71,7 +71,7 @@ class Customer extends TapPayment
         $response = Http::withToken($this->api_token)
             ->get($this->endpoint . 'customers/' . $customer_id);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -102,7 +102,7 @@ class Customer extends TapPayment
         $response = Http::withToken($this->api_token)
             ->put($this->endpoint . 'customers/' . $customer_id, $putRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -116,6 +116,6 @@ class Customer extends TapPayment
         $response = Http::withToken($this->api_token)
             ->delete($this->endpoint . 'customers/' . $customer_id);
 
-        return $response->json();
+        return $response;
     }
 }

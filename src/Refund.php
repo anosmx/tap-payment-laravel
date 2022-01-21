@@ -28,7 +28,7 @@ class Refund extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'refunds/list', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -60,7 +60,7 @@ class Refund extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'refunds', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -74,7 +74,7 @@ class Refund extends TapPayment
         $response = Http::withToken($this->api_token)
             ->get($this->endpoint . 'refunds/' . $refund_id);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -95,6 +95,6 @@ class Refund extends TapPayment
         $response = Http::withToken($this->api_token)
             ->put($this->endpoint . 'refunds/' . $refund_id, $putRequest);
 
-        return $response->json();
+        return $response;
     }
 }

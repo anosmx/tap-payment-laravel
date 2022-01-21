@@ -35,7 +35,7 @@ class Token extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'tokens', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -61,7 +61,7 @@ class Token extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'tokens', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -83,7 +83,7 @@ class Token extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'tokens', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -112,6 +112,6 @@ class Token extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'tokens', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 }

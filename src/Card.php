@@ -18,7 +18,7 @@ class Card extends TapPayment
         $response = Http::withToken($this->api_token)
             ->get($this->endpoint . 'card/' . $customer_id);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -55,7 +55,7 @@ class Card extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'card/verify', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -74,7 +74,7 @@ class Card extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'card/' . $customer_id, $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -89,7 +89,7 @@ class Card extends TapPayment
         $response = Http::withToken($this->api_token)
             ->get($this->endpoint . 'card/' . $customer_id . '/' . $card_id);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -103,7 +103,7 @@ class Card extends TapPayment
         $response = Http::withToken($this->api_token)
             ->get($this->endpoint . 'card/verify/' . $verify_id);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -118,6 +118,6 @@ class Card extends TapPayment
         $response = Http::withToken($this->api_token)
             ->delete($this->endpoint . 'card/' . $customer_id . '/' . $card_id);
 
-        return $response->json();
+        return $response;
     }
 }

@@ -28,7 +28,7 @@ class Product extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'products/list', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -55,7 +55,7 @@ class Product extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'products', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -69,7 +69,7 @@ class Product extends TapPayment
         $response = Http::withToken($this->api_token)
             ->get($this->endpoint . 'products/' . $product_id);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -97,7 +97,7 @@ class Product extends TapPayment
         $response = Http::withToken($this->api_token)
             ->put($this->endpoint . 'products/' . $product_id, $putRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -111,6 +111,6 @@ class Product extends TapPayment
         $response = Http::withToken($this->api_token)
             ->delete($this->endpoint . 'products/' . $product_id);
 
-        return $response->json();
+        return $response;
     }
 }

@@ -30,7 +30,7 @@ class Recurring extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'recurring/list', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     public function createRecurring(array $attributes)
@@ -129,7 +129,7 @@ class Recurring extends TapPayment
         $response = Http::withToken($this->api_token)
             ->post($this->endpoint . 'recurring', $postRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -143,7 +143,7 @@ class Recurring extends TapPayment
         $response = Http::withToken($this->api_token)
             ->get($this->endpoint . 'recurring/' . $recurring_id);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -249,7 +249,7 @@ class Recurring extends TapPayment
         $response = Http::withToken($this->api_token)
             ->put($this->endpoint . 'recurring/' . $recurring_id, $putRequest);
 
-        return $response->json();
+        return $response;
     }
 
     /**
@@ -263,6 +263,6 @@ class Recurring extends TapPayment
         $response = Http::withToken($this->api_token)
             ->delete($this->endpoint . 'recurring/' . $recurring_id);
 
-        return $response->json();
+        return $response;
     }
 }
